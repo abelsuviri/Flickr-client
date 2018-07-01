@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.abelsuviri.flickrclient"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api project(":viewmodel")
+    implementation "com.android.support:design:$androidSupportVersion"
+    implementation "com.android.support:support-v4:$androidSupportVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+    implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
+    implementation "com.squareup.picasso:picasso:$picassoLibrary"
+
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
+}

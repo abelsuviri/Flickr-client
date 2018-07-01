@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api "com.android.support:appcompat-v7:$androidSupportVersion"
+    api "androidx.core:core-ktx:$ktxVersion"
+    api "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$coroutinesAdapterVersion"
+    api "com.google.dagger:dagger-android:$daggerVersion"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.retrofit2:converter-simplexml:$retrofitVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "android.arch.core:core-testing:$lifecycleVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
+    kapt "com.google.auto.value:auto-value:$autoValueVersion"
+    kapt "com.ryanharter.auto.value:auto-value-parcel:$autoValueParcelVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    compileOnly "com.jakewharton.auto.value:auto-value-annotations:$autoValueVersion"
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+

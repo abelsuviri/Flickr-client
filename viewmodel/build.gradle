@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api project(':data')
+
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
